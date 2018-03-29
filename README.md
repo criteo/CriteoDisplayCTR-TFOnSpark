@@ -2,22 +2,22 @@
 
 ## Introduction 
 This project consists of learning a click-throughrate model at scale using TensorflowOnSpark technology.
-Criteo released a 1TB dataset: http://labs.criteo.com/2013/12/download-terabyte-click-logs/
-In order to promote Google cloud technology, Google published a solution to train a model at scale using there 
-proprietary platform : https://cloud.google.com/blog/big-data/2017/02/using-google-cloud-machine-learning-to-predict-clicks-at-scale 
+
+In 2013, Criteo released a 1TB dataset: http://labs.criteo.com/2013/12/download-terabyte-click-logs/. 
+More recently, in order to promote Google cloud technology, Google published a solution to train a model on this data set at scale using there proprietary platform : https://cloud.google.com/blog/big-data/2017/02/using-google-cloud-machine-learning-to-predict-clicks-at-scale 
 
 Instead, we propose a solution based on open source technology that can be leveraged on any cloud, 
 or private cluster relying on spark.
 
-We demonstrate how Tensorflow on Spark (https://github.com/yahoo/TensorFlowOnSpark) can be used to reach the state of the art when it comes to predicting the proba of click at scale.
-Notice that the goal here is not to produce the best pCTR predictor, but rather establish a open method that still reaches the best performance published so far on this dataset.
-Hence, our solutions remains very simple, and rely solely on basic feature extraction, cross-features and hashing, the all trained on logistic regression.
+We demonstrate how Tensorflow on Spark (https://github.com/yahoo/TensorFlowOnSpark) can be used to reach state of the art performances when it comes to predicting the proba of click at scale.
+Notice that the goal here is not to produce the best pCTR predictor, but rather establish an open method that scales on which the user can build on.
+Hence, the proposed solution remains very simple, and rely solely on basic features extraction, cross-features and hashing, trained on logistic regression.
 
 ## Install and test TF on spark
 Before making use of this code, please make sure you can install TF on spark on your cluster and
 run the mnist example as illustrated here:
 https://github.com/yahoo/TensorFlowOnSpark/wiki/GetStarted_YARN
-By so doing, you should make sure that did set up the following variables correctly:
+By so doing, you should make sure that you did set up the following variables correctly:
 
 ```
 export JAVA_HOME=
