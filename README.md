@@ -90,8 +90,8 @@ ${SPARK_HOME}/bin/spark-submit \
 --master yarn \
 --deploy-mode cluster \
 --queue ${QUEUE} \
---num-executors 8 \
---executor-memory 8G \
+--num-executors 12 \
+--executor-memory 27G \
 --py-files TensorFlowOnSpark/tfspark.zip,TensorFlowOnSpark/examples/criteo/spark/criteo_dist.py \
 --conf spark.dynamicAllocation.enabled=false \
 --conf spark.yarn.maxAppAttempts=1 \
