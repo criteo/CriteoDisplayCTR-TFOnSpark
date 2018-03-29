@@ -119,6 +119,6 @@ you be able to retrieve the tensorboard URL in the stdout of the driver:
 You can then track the training loss, and validation loss:
 
 
-![Alt Text](resources/data/TensorBoard-TFonSpark-Criteo-04.png)
+![Alt Text](resources/TensorBoard-Validation.png)
  
 
