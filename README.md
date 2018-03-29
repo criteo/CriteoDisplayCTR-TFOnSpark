@@ -116,7 +116,7 @@ you be able to retrieve the tensorboard URL in the stdout of the driver:
  TensorBoard running at:       http://10.4.112.234:36911
 ```
 
-You can then track the training loss, and validation loss:
+You can then track the validation loss as the training is going on:
 
 
 ![Alt Text](resources/TensorBoard-Validation.png)
