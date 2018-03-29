@@ -47,15 +47,17 @@ done
 ```
 
 ### Upload training data on your AWS s3 using Pig
+
 ```
 %declare awskey yourkey
 %declare awssecretkey yoursecretkey
 SET mapred.output.compress 'true';
 SET mapred.output.compression.codec 'org.apache.hadoop.io.compress.BZip2Codec';
 train_data = load 's3n://${awskey}:${awssecretkey}@criteo-display-ctr-dataset/released/day_{[0-9],1[0-9],2[0-2]}.gz ';
-train_data = FOREACH (GROUP train_data BY ROUND(100* RANDOM()) PARALLEL 100) GENERATE FLATTEN(train_data); 
+train_data = FOREACH (GROUP train_data BY ROUND(10000* RANDOM()) PARALLEL 10000) GENERATE FLATTEN(train_data); 
 store train_data into 's3n://${awskey}:${awssecretkey}@criteo-display-ctr-dataset/data/training/' using PigStorage();
 ```
+We here divide the training data in 10000 chunks, which will allow TFonSpark to reduce its memory usage.
 
 ### Upload validation data on your AWS s3 using Pig
 ```
