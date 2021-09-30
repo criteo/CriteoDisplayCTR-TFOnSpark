@@ -1,7 +1,7 @@
 # Learning Click-Through Rate at Scale with Tensorflow on Spark
+This project is not anymore maintained by Criteo. Nor are the data-sets available to download. Refer to more recent repositories to find a more recent supported project!
 
 ## Introduction 
-This project is not anymore maintained by Criteo. Nor are the data-sets available to download. Refer to more recent repositories to find a more recent supported project.
 This project consists of learning a click-throughrate model at scale using TensorflowOnSpark technology.
 
 In 2013, Criteo released a 1TB dataset: http://labs.criteo.com/2013/12/download-terabyte-click-logs/. 
