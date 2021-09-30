@@ -1,6 +1,7 @@
 # Learning Click-Through Rate at Scale with Tensorflow on Spark
 
 ## Introduction 
+This project is not anymore maintained by Criteo. Nor are the data-sets available to download. Refer to more recent repositories to find a more recent supported project.
 This project consists of learning a click-throughrate model at scale using TensorflowOnSpark technology.
 
 In 2013, Criteo released a 1TB dataset: http://labs.criteo.com/2013/12/download-terabyte-click-logs/. 
@@ -42,7 +43,7 @@ The raw data can be accessed here: http://labs.criteo.com/2013/12/download-terab
 ```
 for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23; do
 	curl -O http://azuremlsampleexperiments.blob.core.windows.net/criteo/day_${i}.gz
-	aws s3 mv  day_${i}.gz s3://criteo-display-ctr-dataset/released/
+	aws s3 mv  day_${i}.gz s3://XXXXXXXXXXXXXXXXXXXXXXXXXX/released/
 done
 ```
 
@@ -53,9 +54,9 @@ done
 %declare awssecretkey yoursecretkey
 SET mapred.output.compress 'true';
 SET mapred.output.compression.codec 'org.apache.hadoop.io.compress.BZip2Codec';
-train_data = load 's3n://${awskey}:${awssecretkey}@criteo-display-ctr-dataset/released/day_{[0-9],1[0-9],2[0-2]}.gz ';
+train_data = load 's3n://${awskey}:${awssecretkey}@XXXXXXXXXXXXXXXXXXXXXXXXXX/released/day_{[0-9],1[0-9],2[0-2]}.gz ';
 train_data = FOREACH (GROUP train_data BY ROUND(10000* RANDOM()) PARALLEL 10000) GENERATE FLATTEN(train_data); 
-store train_data into 's3n://${awskey}:${awssecretkey}@criteo-display-ctr-dataset/data/training/' using PigStorage();
+store train_data into 's3n://${awskey}:${awssecretkey}@XXXXXXXXXXXXXXXXXXXXXXXXXX/data/training/' using PigStorage();
 ```
 We here divide the training data in 10000 chunks, which will allow TFonSpark to reduce its memory usage.
 
@@ -65,9 +66,9 @@ We here divide the training data in 10000 chunks, which will allow TFonSpark to 
 %declare awssecretkey yoursecretkey
 SET mapred.output.compress 'true';
 SET mapred.output.compression.codec 'org.apache.hadoop.io.compress.BZip2Codec';
-train_data = load 's3n://${awskey}:${awssecretkey}@criteo-display-ctr-dataset/released/day_23.gz';
+train_data = load 's3n://${awskey}:${awssecretkey}@XXXXXXXXXXXXXXXXXXXXXXXXXX/released/day_23.gz';
 train_data = FOREACH (GROUP train_data BY ROUND(100* RANDOM()) PARALLEL 100) GENERATE FLATTEN(train_data); 
-store train_data into 's3n://${awskey}:${awssecretkey}@criteo-display-ctr-dataset/data/validation' using PigStorage();
+store train_data into 's3n://${awskey}:${awssecretkey}@XXXXXXXXXXXXXXXXXXXXXXXXXX/data/validation' using PigStorage();
 ```
 
 
